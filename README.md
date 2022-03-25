@@ -39,3 +39,9 @@ Requires: MATLAB, Simulink
 MATLAB Release Compatibility: Created with R2017b, Compatible with any release
 
 Platform Compatibility: Windows macOS Linux 
+
+Developed by: Sysenso Systems, https://sysenso.com/
+
+Contact: contactus@sysenso.com
+
+Note: Please share your comments and contact us if you are interested in updating the features further.
