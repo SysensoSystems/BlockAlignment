@@ -1,0 +1,41 @@
+Blcok Alignment Approach:
+
+Refer sample .dot file prepared for the path sldemo_autotrans/Engine.
+Please refer the mwdot.exe in the path.  matlabroot\bin\win32 or matlabroot\bin\win64
+We can call this application(mwdot) in MATLAB command window as follows,
+[status,returnCode]=system(['mwdot -Tplain outfile_engine.dot'])
+
+With Graphviz: [status,returnCode]=system(['dot -Tplain outfile_engine.dot'])
+
+This returns the following info,
+returnCode =
+graph 1.000 7.194 1.833
+node Ti  0.486 1.208 0.750 0.500 Ti solid box blue lightgrey
+node sum  1.736 1.208 0.750 0.500 sum solid box blue lightgrey
+node EngineTorque  6.292 0.833 1.569 0.500 EngineTorque solid box blue lightgrey
+node gain  2.986 1.528 0.750 0.500 gain solid box blue lightgrey
+node integrator  4.431 1.528 1.125 0.500 integrator solid box blue lightgrey
+node Ne  6.292 1.583 0.750 0.500 Ne solid box blue lightgrey
+node Throttle  4.431 0.250 0.958 0.500 Throttle solid box blue lightgrey
+edge Ti sum 4 0.861 1.208 0.972 1.208 1.097 1.208 1.222 1.208 solid black
+edge sum gain 4 2.111 1.306 2.222 1.333 2.361 1.361 2.486 1.403 solid black
+edge EngineTorque sum 4 2.222 1.167 3.014 1.097 4.556 0.972 5.500 0.903 solid black
+edge gain integrator 4 3.361 1.528 3.472 1.528 3.597 1.528 3.722 1.528 solid black
+edge integrator EngineTorque 4 5.000 1.319 5.153 1.264 5.319 1.194 5.500 1.139 solid black
+edge integrator Ne 4 5.000 1.542 5.250 1.556 5.542 1.556 5.792 1.569 solid black
+edge Throttle EngineTorque 4 4.917 0.403 5.056 0.444 5.208 0.500 5.361 0.542 solid black
+stop
+*************************************************************************************
+
+For example in the above,
+"node sum  1.736 1.208 0.750 0.500 sum solid box blue lightgrey"
+[1.736 1.208] specifies the co-ordinate values of the "sum" block. This information can be used to arrive the block position in the model layout.
+We are interested only the positional values for the blocks and we can ignore the other details in the return argument returnCode.
+
+Hence, the possible approach as follows.
+- Read the model file and generate .dot file for every layer/subsystem
+- Call mwdot.exe to arrive the block positions
+- Create the blocks in a layer with the attributes and the positional values from mwdot.exe
+- Use auto-routing for wiring between the blocks.
+- Continue for all the subsystem levels.
+

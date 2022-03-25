@@ -1,0 +1,11 @@
+digraph engine {                 
+rankdir="LR"                                     
+node [shape=box, color=blue]                     
+   Ti -> sum;          
+   EngineTorque -> sum;       
+   sum -> gain;  
+   gain -> integrator;        
+   integrator -> Ne;            
+   integrator -> EngineTorque;
+   Throttle -> EngineTorque; 
+}                                                
