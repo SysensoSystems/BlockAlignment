@@ -32,3 +32,10 @@ Sample:
 >> autoBlockAlignment('sldemo_autotrans/Vehicle','current','graphviz')
 >> autoBlockAlignment('sldemo_autotrans','all','digraph')
 >> autoBlockAlignment('sldemo_autotrans/Vehicle','current','mwdot','left','row') 
+
+
+Requires: MATLAB, Simulink
+
+MATLAB Release Compatibility: Created with R2017b, Compatible with any release
+
+Platform Compatibility: Windows macOS Linux 
